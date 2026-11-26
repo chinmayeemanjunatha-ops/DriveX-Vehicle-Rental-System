@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveX | Book Now</title>
+
+    <style>
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        header {
+            background: #080808;
+            padding: 18px 7%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #e6b92e;
+            font-size: 28px;
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #e6b92e;
+        }
+
+        .booking-container {
+            max-width: 650px;
+            margin: 45px auto;
+            padding: 30px;
+            background: #1c1c1c;
+            border-radius: 12px;
+            box-shadow: 0 0 15px #000;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e6b92e;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 7px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            background: #292929;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 6px;
+        }
+
+        .summary {
+            margin-top: 20px;
+            padding: 15px;
+            background: #292929;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background: #e6b92e;
+            color: #111;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #c99f1e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #aaa;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        .success-message {
+            background: #202820;
+            border: 1px solid #4b8b4b;
+            padding: 15px;
+            border-radius: 8px;
+            color: #e6b92e;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h2 class="logo">DriveX</h2>
+
+        <ul>
+            <li><a href="/frontend/index.html">Home</a></li>
+            <li><a href="/frontend/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="booking-container">
+
+    <h1>Book Your Vehicle</h1>
+
+    <form id="bookingForm">
+
+        <label for="customerName">Customer Name</label>
+        <input type="text" id="customerName" required maxlength="100">
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required maxlength="15">
+
+        <label for="category">Vehicle Category</label>
+        <select id="category" required>
+            <option value="">Select Category</option>
+            <option value="cars">Cars</option>
+            <option value="bikes">Bikes & Scooters</option>
+            <option value="trucks">Trucks</option>
+        </select>
+
+        <label for="vehicle">Select Vehicle</label>
+        <select id="vehicle" required>
+            <option value="">Select Vehicle</option>
+        </select>
+
+        <label for="pickup">Pickup Date & Time</label>
+        <input type="datetime-local" id="pickup" required>
+
+        <label for="return">Return Date & Time</label>
+        <input type="datetime-local" id="return" required>
+
+        <div class="summary">
+            <h3>Booking Summary</h3>
+            <p>Hourly Rate: ₹<span id="rate">0</span></p>
+            <p>Duration: <span id="duration">0</span> hours</p>
+            <p>Total Amount: ₹<span id="total">0</span></p>
+        </div>
+
+        <button type="submit" id="submitButton">
+            Confirm Booking
+        </button>
+
+    </form>
+
+    <p id="message"></p>
+
+</div>
+
+<footer>
+    <p>© 2026 DriveX Vehicle Rental System. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+const vehicles = {
+    cars: {
+        "Maruti Suzuki Swift": 300,
+        "Maruti Suzuki Wagon R": 350,
+        "Hyundai i20": 380,
+        "Maruti Suzuki Dzire": 360
+    },
+
+    bikes: {
+        "Honda Activa": 200,
+        "TVS Jupiter": 200,
+        "Honda Shine": 250,
+        "Bajaj Pulsar 150": 250
+    },
+
+    trucks: {
+        "Tata 407": 400,
+        "Tata LPT 1618": 700
+    }
+};
+
+const category = document.getElementById("category");
+const vehicle = document.getElementById("vehicle");
+const pickup = document.getElementById("pickup");
+const returnDate = document.getElementById("return");
+const message = document.getElementById("message");
+const submitButton = document.getElementById("submitButton");
+
+// Load vehicles
+
+function loadVehicles(selectedVehicle = "") {
+
+    vehicle.innerHTML = '<option value="">Select Vehicle</option>';
+
+    const selectedVehicles = vehicles[category.value];
+
+    if (selectedVehicles) {
+        for (const name in selectedVehicles) {
+            const option = document.createElement("option");
+            option.value = name;
+            option.textContent = name;
+            vehicle.appendChild(option);
+        }
+    }
+
+    if (
+        selectedVehicle &&
+        selectedVehicles &&
+        selectedVehicles[selectedVehicle] !== undefined
+    ) {
+        vehicle.value = selectedVehicle;
+    }
+
+    calculateTotal();
+}
+
+category.addEventListener("change", function() {
+    loadVehicles();
+});
+
+// Automatically select vehicle from URL
+
+const params = new URLSearchParams(window.location.search);
+const selectedVehicle = params.get("vehicle");
+
+if (selectedVehicle) {
+    for (const categoryName in vehicles) {
+        if (vehicles[categoryName][selectedVehicle] !== undefined) {
+            category.value = categoryName;
+            loadVehicles(selectedVehicle);
+
+            category.disabled = true;
+            vehicle.disabled = true;
+
+            break;
+        }
+    }
+}
+
+// Calculate total
+
+function calculateTotal() {
+
+    const selectedCategory = category.value;
+    const selectedName = vehicle.value;
+
+    let rate = 0;
+    let hours = 0;
+    let total = 0;
+
+    if (selectedCategory && selectedName) {
+        rate = vehicles[selectedCategory][selectedName] || 0;
+    }
+
+    if (pickup.value && returnDate.value) {
+
+        const start = new Date(pickup.value);
+        const end = new Date(returnDate.value);
+
+        if (end > start) {
+            hours = Math.ceil(
+                (end.getTime() - start.getTime()) / 3600000
+            );
+
+            total = hours * rate;
+        }
+    }
+
+    document.getElementById("rate").textContent = rate;
+    document.getElementById("duration").textContent = hours;
+    document.getElementById("total").textContent = total;
+}
+
+vehicle.addEventListener("change", calculateTotal);
+pickup.addEventListener("change", calculateTotal);
+returnDate.addEventListener("change", calculateTotal);
+
+// Confirm booking WITHOUT MySQL or backend API
+
+document.getElementById("bookingForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    message.textContent = "";
+    message.className = "";
+
+    if (returnDate.value <= pickup.value) {
+        message.textContent =
+            "Return date and time must be after pickup date and time.";
+
+        message.style.color = "red";
+        return;
+    }
+
+    const customerName =
+        document.getElementById("customerName").value.trim();
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+    const selectedCategory = category.value;
+    const selectedName = vehicle.value;
+
+    if (!vehicles[selectedCategory] ||
+        !vehicles[selectedCategory][selectedName]) {
+
+        message.textContent = "Please select a valid vehicle.";
+        message.style.color = "red";
+        return;
+    }
+
+    calculateTotal();
+
+    const rate = vehicles[selectedCategory][selectedName];
+
+    const start = new Date(pickup.value);
+    const end = new Date(returnDate.value);
+
+    const durationHours = Math.ceil(
+        (end.getTime() - start.getTime()) / 3600000
+    );
+
+    const totalAmount = durationHours * rate;
+
+    const bookingId = "DX" + Date.now().toString().slice(-8);
+
+    message.className = "success-message";
+
+    message.textContent =
+        "Booking Confirmed Successfully! " +
+        "Booking ID: " + bookingId +
+        " | Customer: " + customerName +
+        " | Phone: " + phone +
+        " | Vehicle: " + selectedName +
+        " | Duration: " + durationHours + " hours" +
+        " | Total Amount: ₹" + totalAmount;
+
+    submitButton.textContent = "Booking Confirmed";
+    submitButton.disabled = true;
+
+});
+
+</script>
+
+</body>
+</html>

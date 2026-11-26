@@ -1,0 +1,640 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #101010;
+    color: white;
+}
+
+/* NAVIGATION */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    background: #080808;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.logo span {
+    color: #d4af37;
+}
+
+nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #d4af37;
+}
+
+.nav-btn {
+    background: #d4af37;
+    color: black;
+    padding: 11px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 70px 10%;
+    background: linear-gradient(
+        90deg,
+        #080808 15%,
+        rgba(8,8,8,0.85) 55%,
+        rgba(8,8,8,0.35)
+    ),
+    url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600')
+    center/cover;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.tagline {
+    color: #d4af37;
+    letter-spacing: 3px;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: 65px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.description {
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.main-btn {
+    display: inline-block;
+    background: #d4af37;
+    color: black;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* VEHICLES SECTION */
+
+.vehicles {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.vehicles h2,
+.about h2 {
+    font-size: 38px;
+    margin-bottom: 40px;
+}
+
+.vehicle-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.vehicle-card {
+    background: #1b1b1b;
+    padding: 30px;
+    width: 300px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-8px);
+    border-color: #d4af37;
+}
+
+
+.vehicle-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.vehicle-card h4 {
+    color: #d4af37;
+    margin: 15px 0;
+    font-size: 19px;
+}
+
+.book-btn {
+    display: inline-block;
+    background: #d4af37;
+    color: black !important;
+    padding: 11px 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.vehicle-card h3 {
+    margin-bottom: 12px;
+    font-size: 23px;
+}
+
+.vehicle-card p {
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.vehicle-card a {
+    color: #d4af37;
+    text-decoration: none;
+}
+
+/* ABOUT SECTION */
+
+.about {
+    background: #181818;
+    padding: 70px 10%;
+    text-align: center;
+}
+
+.about p:last-child {
+    color: #bbb;
+    line-height: 1.8;
+    max-width: 650px;
+    margin: auto;
+}
+
+/* FOOTER */
+
+footer {
+    background: #080808;
+    padding: 35px;
+    text-align: center;
+    color: #999;
+    line-height: 2;
+}
+
+footer h2 {
+    color: #d4af37;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav a {
+        margin: 0 7px;
+        font-size: 13px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero {
+        padding: 60px 7%;
+    }
+
+    .vehicles h2,
+    .about h2 {
+        font-size: 30px;
+    }
+}
+
+/* ===== DRIVEX DESIGN FIXES ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #101010;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* NAVIGATION BAR */
+
+header {
+    background-color: #080808;
+    padding: 15px 5%;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo {
+    color: #e0b52f;
+    font-size: 28px;
+    margin: 0;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #e0b52f;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 350px;
+    padding: 70px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero h1 {
+    font-size: 42px;
+    max-width: 450px;
+    margin: 0;
+}
+
+.hero p {
+    max-width: 400px;
+    line-height: 1.7;
+    color: #dddddd;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #e0b52f;
+    color: #080808;
+    padding: 12px 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* VEHICLE SECTIONS */
+
+.vehicle-section {
+    width: 100%;
+    padding: 35px 5%;
+    text-align: center;
+}
+
+.vehicle-section h2,
+.booking-section h2,
+.about-section h2,
+.contact-section h2 {
+    color: #e0b52f;
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.vehicle-container {
+    display: grid;
+    grid-template-columns: repeat(2, 275px);
+    justify-content: center;
+    gap: 40px;
+    padding: 25px 5%;
+}
+
+.vehicle-card {
+    background-color: #1c1c1c;
+    border: 1px solid #303030;
+    border-radius: 10px;
+    padding: 20px;
+    width: 220px;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-5px);
+    border-color: #e0b52f;
+}
+
+.vehicle-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.vehicle-card h3 {
+    color: white;
+    font-size: 17px;
+    margin-top: 15px;
+}
+
+.vehicle-card p {
+    color: #bbbbbb;
+    font-size: 13px;
+}
+
+.vehicle-card h4 {
+    color: #e0b52f;
+}
+
+.vehicle-card .btn {
+    padding: 10px 18px;
+    font-size: 13px;
+}
+
+/* BOOKING SECTION */
+
+.booking-section {
+    background-color: #171717;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.booking-section > p {
+    color: #cccccc;
+    margin-bottom: 25px;
+}
+
+#bookingForm {
+    max-width: 550px;
+    width: 100%;
+    margin: auto;
+    padding: 30px;
+    background-color: #222222;
+    border: 1px solid #444444;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+#bookingForm label {
+    color: #e0b52f;
+    margin: 12px 0 7px;
+    font-weight: bold;
+}
+
+#bookingForm input,
+#bookingForm select {
+    width: 100%;
+    padding: 13px;
+    background-color: #101010;
+    color: white;
+    border: 1px solid #555555;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+}
+
+#bookingForm input:focus,
+#bookingForm select:focus {
+    border-color: #e0b52f;
+}
+
+#bookingForm button {
+    margin-top: 25px;
+    padding: 14px;
+    background-color: #e0b52f;
+    color: #080808;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#bookingForm button:hover {
+    background-color: white;
+}
+
+#totalAmount {
+    color: #e0b52f;
+    text-align: center;
+    margin-top: 25px;
+}
+
+#bookingMessage {
+    color: #e0b52f;
+    text-align: center;
+}
+
+/* ABOUT SECTION */
+
+.about-section {
+    padding: 50px 10%;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.about-section p {
+    color: #cccccc;
+    max-width: 850px;
+    margin: auto;
+}
+
+/* CONTACT SECTION */
+
+.contact-section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #181818;
+}
+
+.contact-section p {
+    color: #cccccc;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #080808;
+    color: #999999;
+    padding: 20px;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* MOBILE RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 50px 7%;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .vehicle-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    #bookingForm {
+        padding: 20px;
+    }
+}
+
+/* FIX BUTTON VISIBILITY */
+
+.btn,
+button,
+.buy-btn {
+    background-color: #e6b92e !important;
+    color: #111111 !important;
+    font-weight: bold !important;
+    border: 1px solid #e6b92e !important;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none !important;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* BUTTON HOVER EFFECT */
+
+.btn:hover,
+button:hover,
+.buy-btn:hover {
+    background-color: #111111 !important;
+    color: #e6b92e !important;
+    border: 1px solid #e6b92e !important;
+}
+
+/* DriveX Booking Page Styling */
+
+body {
+    background-color: #101010;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #080808;
+    padding: 15px 5%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav .logo {
+    color: #e6b92e;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: #e6b92e;
+}
+
+.booking-section {
+    background-color: #101010;
+}
+
+.booking-container {
+    box-shadow: 0 0 15px rgba(230, 185, 46, 0.15);
+}
+
+footer {
+    background-color: #080808;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
